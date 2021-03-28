@@ -1,69 +1,65 @@
-import React from 'react';
-import fire from './fire.js';
-import { Avatar, Grid, Paper, Button, TextField, makeStyles } from '@material-ui/core';
-import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
-import EmailIcon from '@material-ui/icons/Email';
-import VisibilityIcon from '@material-ui/icons/Visibility';
-import Ground from './Ground.js';
+import React, { useRef, useState } from "react"
+import { Form, Button, Card, Alert, Container } from "react-bootstrap"
+import { useAuth } from "./AuthContext"
+import { Link, useHistory } from "react-router-dom"
+import CenteredContainer from "./CenteredContainer"
 
+export default function Signup() {
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  const passwordConfirmRef = useRef()
+  const { signup } = useAuth()
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
+  const history = useHistory()
 
-class SignUp extends React.Component {
+  async function handleSubmit(e) {
+    e.preventDefault()
 
-  signUp() {
-    const email = document.querySelector('#email').value;
-    const password = document.querySelector('#password').value;
-    fire.auth().createUserWithEmailAndPassword(email, password)
-      .then((u) => {
-        console.log('Successfully Signed Up');
-      })
-      .catch((err) => {
-        console.log('Error: ' + err.toString());
-      })
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError("Passwords do not match")
+    }
+
+    try {
+      setError("")
+      setLoading(true)
+      await signup(emailRef.current.value, passwordRef.current.value)
+      history.push("/")
+    } catch {
+      setError("Failed to create an account")
+    }
+
+    setLoading(false)
   }
 
- 
-  
-
-  render(){
-    return (
-     
-     <>
-      <Grid>
-      
-      <Paper elevation={20} style={{padding: 30, height:'70vh', width:580, margin:"40px auto"}}>
-         <Grid align='center'>
-            <Avatar style={{backgroundColor: 'green',}}><WorkOutlineIcon/></Avatar>
-            <h2 style={{marginTop: '15px'}}>Sign-up</h2>
-         </Grid>
-
-<Grid container justify = "center">
-      <Grid container spacing={1} alignItems="flex-end">
-        <Grid item>
-          <EmailIcon />
-        </Grid>
-        <Grid item>
-          <TextField className={<Ground/>} id="email" label="Email-ID" fullWidth required     />
-        </Grid>
-      </Grid>
-
-
-      <Grid container spacing={1} alignItems="flex-end">
-        <Grid item>
-          <VisibilityIcon style={{cursor: 'pointer'}} />
-        </Grid>
-        <Grid item >
-          <TextField className={<Ground/>} style={{marginTop: '15px'}} id="password" label="Password" type="password" fullWidth required />
-        </Grid>
-      </Grid>
-      </Grid>
-
-
-        <Button style={{backgroundColor: "#81F768",margin: '10px',marginTop: '25px'}} variant="contained"  onClick={this.signUp} fullWidth={true} >Sign up</Button>
-      </Paper>
-      </Grid>
-     </> 
-    )
-  }
+  return (
+    <CenteredContainer>
+      <Card>
+        <Card.Body>
+          <h2 className="text-center mb-4">Sign Up</h2>
+          {error && <Alert variant="danger">{error}</Alert>}
+          <Form onSubmit={handleSubmit}>
+            <Form.Group id="email">
+              <Form.Label>Email</Form.Label>
+              <Form.Control type="email" ref={emailRef} required />
+            </Form.Group>
+            <Form.Group id="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" ref={passwordRef} required />
+            </Form.Group>
+            <Form.Group id="password-confirm">
+              <Form.Label>Password Confirmation</Form.Label>
+              <Form.Control type="password" ref={passwordConfirmRef} required />
+            </Form.Group>
+            <Button disabled={loading} className="w-100" type="submit">
+              Sign Up
+            </Button>
+          </Form>
+        </Card.Body>
+      </Card>
+      <div className="w-100 text-center mt-2">
+        Already have an account? <Link to="/login">Log In</Link>
+      </div>
+    </CenteredContainer>
+  )
 }
-
-export default SignUp;

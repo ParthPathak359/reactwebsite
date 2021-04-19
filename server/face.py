@@ -6,7 +6,7 @@ from datetime import datetime
 
 video_capture = cv2.VideoCapture(0)
 
-path = 'ImagesAttendance'
+path = 'C:/Users/patha/Desktop/reactapp/myapp/server/ImagesAttendance'
 images = []
 classNames = []
 myList = os.listdir(path)

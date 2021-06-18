@@ -1,56 +1,21 @@
 import React from 'react'
-import { Navbar, Nav } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-
-import { AppBar, Toolbar, IconButton, Typography ,Button, makeStyles } from "@material-ui/core" 
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-      '& > *': {
-        margin: theme.spacing(1),
-      },
-    },
-  }));
-
-  
-
-
+import { Navbar, Nav, NavbarBrand } from 'react-bootstrap'
+import { Link, NavLink } from 'react-router-dom'
 export default function NewNavbarComponent() {
-    const classes = useStyles();
 
     return (
         <>
-        <div className={classes.root}>
-        
-          <div className="App">
-            <AppBar position="sticky" style={{ backgroundColor: "black"}}>
+            <Navbar style={{ marginRight: '40px', marginLeft: '40px'}} bg="transparent" expand="true" display="flex">
+                <NavbarBrand as={Link} to="/user">
+                    Teachers Dashboard
+                </NavbarBrand>
 
-                 <Toolbar>
-
-                  <Typography variant="h5">
-                      <Link to="/user">
-                      Teachers Dashboard
-                      </Link>
-                 </Typography>
-
-
-                 <Button
-                    variant="contained"
-                    color="primary"
-                    size="large"
-                    className={classes.button}
-                    startIcon={<AccountCircleIcon />}
-                    component={Link} to={'/profile'}
-                    >
-                       Profile
-                </Button>
-                
-                </Toolbar>
-            </AppBar>
-         </div>
-        </div>
-</>
+                <Nav>
+                    <NavLink as={Link} to="/profile">
+                        Profile
+                    </NavLink>
+                </Nav>
+            </Navbar>
+        </>
     )
 }

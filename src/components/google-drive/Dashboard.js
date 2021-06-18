@@ -20,11 +20,11 @@ const useStyles = makeStyles((theme) => ({
   },
 
   all: {
-    margin: theme.spacing(2),
-    minWidth: 250,
+      minWidth: 250,
+
   },
   selectEmpty: {
-    marginTop: theme.spacing(5),
+    marginTop: theme.spacing(9),
   },
 
 }));
@@ -103,9 +103,7 @@ export default function Dashboard() {
           onChange={(e) => setBugject(e.target.value)}
           className={classes.selectEmpty}
          >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
+          
           <MenuItem value={"Business Intelligence"}>Business Intelligence</MenuItem>
           <MenuItem value={"Software Quality Assurance"}>Software Quality Assurance</MenuItem>
           <MenuItem value={"Security in Computing"}>Security in Computing</MenuItem>
@@ -126,9 +124,7 @@ export default function Dashboard() {
           onChange={(e) => setLecture(e.target.value)}
           className={classes.selectEmpty}
          >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
+
           <MenuItem value={"TYIT-A"}>TYIT A</MenuItem>
           <MenuItem value={"TYIT-B"}>TYIT B</MenuItem>
          </Select>
@@ -149,7 +145,7 @@ export default function Dashboard() {
         <input className={classes.all} value={attendanceLink} /><br/><br/>
 
 
-        <Button 
+        {/*<Button 
          variant="contained" 
          color="secondary" 
          onClick={handleClick} 
@@ -161,7 +157,11 @@ export default function Dashboard() {
          <Alert onClose={handleClose} severity="success">
           Link has been copied!
          </Alert>
-        </Snackbar>
+        </Snackbar>*/}
+
+                <h3>
+                    add validation on all the selecting
+                </h3>
 
 
 

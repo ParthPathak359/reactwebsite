@@ -13,7 +13,7 @@ function Pricing() {
         <>
             <div className="pricing__section">
                 <div className="pricing__wrapper">
-                    <h1 className="pricing__heading" style={{color: 'white'}}>Pricing</h1>
+                    <h1 className="pricing__heading" style={{color: 'white', alignItems: 'center'}}>Pricing</h1>
                     <div className="pricing__container">
                         <Link to="/sign-up" classname='pricing__container-card'>
                             <div className="pricing__container-cardInfo">
@@ -24,9 +24,9 @@ function Pricing() {
                                 <h4>$8.99</h4>
                                 <p>per month</p>
                                 <ul className="pricing__container-features">
-                                    <li>100 Transactions</li>
+                                    <li>100 Students</li>
                                     <li>2% Cash Back</li>
-                                    <li>$10,000 Limit</li>
+                                    <li>10,000 images</li>
                                 </ul>
                                 <Button buttonSize='btn--wide' buttonColor='primary'>
                                     Choose Plan
@@ -44,9 +44,9 @@ function Pricing() {
                                 <h4>$29.99</h4>
                                 <p>per month</p>
                                 <ul className="pricing__container-features">
-                                    <li>1000 Transactions</li>
+                                    <li>1000 Students</li>
                                     <li>3.5% Cash Back</li>
-                                    <li>$100,000 Limit</li>
+                                    <li>100,000 students</li>
                                 </ul>
                                 <Button buttonSize='btn--wide' buttonColor='blue'>
                                     Choose Plan
@@ -63,9 +63,9 @@ function Pricing() {
                                 <h4>$99.99</h4>
                                 <p>per month</p>
                                 <ul className="pricing__container-features">
-                                    <li>Unlimited Transactions</li>
+                                    <li>Unlimited students</li>
                                     <li>5% Cash Back</li>
-                                    <li>Unlimited Spending</li>
+                                    <li>Unlimited image records</li>
                                 </ul>
                                 <Button buttonSize='btn--wide' buttonColor='primary'>
                                     Choose Plan

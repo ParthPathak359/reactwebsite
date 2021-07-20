@@ -7,7 +7,7 @@ export const homeObjOne = {
     description: 'Get access to our exclusive diamond card that allows you to get unlimited transactions without getting any extra fees',
     buttonLabel: 'Get Started',
     imgStart: '',
-    img: 'images/svg-1.svg',
+    img: 'https://github.com/ParthPathak359/reactwebsite/blob/main/public/images/svg-1.svg',
     alt: 'Credit Card'
 }
 
